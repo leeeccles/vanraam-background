@@ -46,7 +46,7 @@
   left: 0 !important;
   right: 0 !important;
   height: 100% !important;
-  background-image: url('https://github.com/leeeccles/vanraam-background/blob/97b5ea957b5e3b23692e1c9b29cc6a726beb8674/1773935694-vanraam-easy-rider-tricycle-uk.png') !important;
+  background-image: url('https://github.com/leeeccles/vanraam-background/1773935694-vanraam-easy-rider-tricycle-uk.png') !important;
   background-size: 75% auto !important;
   background-position: left 70% !important;
   background-repeat: no-repeat !important;
