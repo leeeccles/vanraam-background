@@ -1,23 +1,23 @@
 /* =================== UI TIDYING =================== */
-
 .section.logo-section.workspace-navigation-logo {
   display: none !important;
 }
+
 .nested-section.home-section {
   margin-top: 8px !important;
 }
+
 .group-pic-container .type-icon {
   display: none !important;
 }
 
-
 /* =================== HOMEPAGE: GRADIENT BACKGROUND =================== */
 /*
-  Soft top-to-bottom brand colour gradient â€” replaces the blueprint grid.
-  Lighter at the top, gently deeper toward the bottom so the page feels
-  grounded without any geometric pattern competing with the photo.
+  Tint the homepage in the platform colour: near-white at the top, slightly
+  deeper toward the bottom.
+  Tune: the 2% / 6% mix percentages control how strong the tint is. Keep the
+  gap between them small (3-5 points) or the gradient starts to band.
 */
-
 .__view:has(#my-work-section) {
   position: relative !important;
   background: linear-gradient(
@@ -28,28 +28,29 @@
   min-height: 100vh !important;
 }
 
-
 /* =================== HOMEPAGE: COLLABORATION PHOTO =================== */
 /*
-  Fixed background so the photo stays anchored while content scrolls â€”
-  adds depth and makes it feel like part of the interface, not content.
-  Opacity 0.08 keeps it barely-there; the gradient wash behind it tints
-  it in the platform colour. Gradient mask softens the top/bottom edges.
-
+  Photo pinned to the viewport so it stays put while content scrolls.
+  Tune:
+    background-image     - swap the URL for any other photo
+    background-size      - 75% of viewport width; raise to crop in tighter
+    background-position  - left 70% = flush left, 70% down the frame
+    opacity              - 0.10 is barely-there; 0.20 is roughly the ceiling
+                           before it competes with text
+    mask-image           - first gradient fades top/bottom, second fades out
+                           to the right. Both must stay identical to the
+                           -webkit- copies below or Safari drops the effect.
+  Do not add `filter` here — it breaks position: fixed on some engines.
+*/
 .__view:has(#my-work-section)::before {
   content: '' !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  height: 100% !important;
+  position: fixed !important;
+  inset: 0 !important;
   background-image: url('https://www.vanraam.com/assets/img/92379/1696324349-studded-tires-van-raam-easy-rider-tricycle.jpg?auto=format&crop=focalpoint') !important;
   background-size: 75% auto !important;
   background-position: left 70% !important;
   background-repeat: no-repeat !important;
-  background-attachment: fixed !important;
   opacity: 0.10 !important;
-  filter: grayscale(15%) !important;
   mask-image:
     linear-gradient(to bottom, transparent 0%, black 28%, black 60%, transparent 100%),
     linear-gradient(to right, black 30%, transparent 75%) !important;
@@ -62,15 +63,18 @@
   pointer-events: none !important;
 }
 
-/* Keep all content above the photo layer */
+/* Required: lifts content above the photo layer. Leave as is. */
 .__view:has(#my-work-section) > * {
   position: relative !important;
   z-index: 1 !important;
 }
 
-
 /* =================== MY WORK: SHADOW LIFT =================== */
-
+/*
+  Two-layer shadow: a tight one for edge definition, a wide one for lift.
+  Tune the 8% / 5% alpha values together — raising both past ~15% reads as
+  a drop shadow rather than a lift.
+*/
 #my-work-section {
   border-radius: 12px !important;
   box-shadow:
