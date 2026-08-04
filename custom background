@@ -36,9 +36,6 @@
   Opacity 0.08 keeps it barely-there; the gradient wash behind it tints
   it in the platform colour. Gradient mask softens the top/bottom edges.
 
-  Image hosted at: https://github.com/leeeccles/lms-assets
-*/
-
 .__view:has(#my-work-section)::before {
   content: '' !important;
   position: absolute !important;
